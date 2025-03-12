@@ -22,6 +22,6 @@
               on memory usage, allowing your application to prioritize improved
               run time when memory usage is low, but prioritize decreased memory
               usage when memory usage is high.")
- (depends ocaml)
+ (depends (ocaml (>= 4.08.0)))
  (tags
   ("garbage collector" "gc")))
