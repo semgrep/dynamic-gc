@@ -1,0 +1,4 @@
+(library
+ (public_name dynamic_gc)
+ (name dynamic_gc)
+ (wrapped false))
