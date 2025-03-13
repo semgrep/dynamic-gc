@@ -11,6 +11,10 @@ Specifically, this utility adjusts the `space_overhead` value at the end of each
 major collection using the [`Gc`](https://ocaml.org/manual/5.3/api/Gc.html)
 module.
 
+We used this to [upgrade Semgrep from OCaml 4 to OCaml
+5](https://semgrep.dev/blog/2025/upgrading-semgrep-from-ocaml-4-to-ocaml-5/)
+without introducing memory consumption or time regressions.
+
 ## Usage
 
 Install via `opam install dynamic_gc`.
