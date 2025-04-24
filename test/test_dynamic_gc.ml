@@ -23,13 +23,7 @@ let simple_config =
     }
 
 let same_heap_size_cutoff =
-  DynamicGc.
-    {
-      min_space_overhead = 20;
-      max_space_overhead = 40;
-      heap_start_worrying_mb = 1_024;
-      heap_really_worry_mb = 1_024;
-    }
+  DynamicGc.Config.simple ~threshold_mb:1_024
 
 let cases : case list =
   [
@@ -38,9 +32,9 @@ let cases : case list =
     ("halfway", simple_config, 2_560, 30);
     ("at really worrying limit", simple_config, 4_096, 20);
     ("above really worrying limit", simple_config, 8_192, 20);
-    ("below single cutoff", same_heap_size_cutoff, 1_023, 40);
-    ("at single cutoff", same_heap_size_cutoff, 1_024, 40);
-    ("above single cutoff", same_heap_size_cutoff, 1_025, 20);
+    ("below single cutoff", same_heap_size_cutoff, 1_023, 120);
+    ("at single cutoff", same_heap_size_cutoff, 1_024, 120);
+    ("above single cutoff", same_heap_size_cutoff, 1_025, 80);
   ]
 
 let check_case (name, config, heap_size, expected_space_overhead) =

@@ -73,6 +73,15 @@ let stop_dynamic_tuning () =
         "Gc_.stop_dynamic_tuning called when dynamic tuning was already \
          stopped."
 
+module Config = struct
+  let simple ~threshold_mb = {
+    min_space_overhead = 80;
+    max_space_overhead = 120;
+    heap_start_worrying_mb = threshold_mb;
+    heap_really_worry_mb = threshold_mb;
+  }
+end
+
 module ForTestingDoNotUse = struct
   let space_overhead_of_heap_size = space_overhead_of_heap_size
 end

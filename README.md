@@ -37,6 +37,17 @@ DynamicGc.(setup_dynamic_tuning
   });
 ```
 
+We also provide an even simpler way to set up dynamic tuning. The
+`DynamicGc.Config.simple` function takes a threshold heap size and produces a
+config. Below that threshold, the default `space_overhead` value of 120 is used.
+Above the threshold, `space_overhead` is reduced somewhat to 80. With a suitable
+application-specific or user-provided threshold, this configuration should be
+suitable for many applications.
+
+```
+DynamicGc.(setup_dynamic_tuning (Config.simple ~threshold_mb:4_096));
+```
+
 ## Caveats
 
 This tunes the garbage collector based on the size of the major heap, not the

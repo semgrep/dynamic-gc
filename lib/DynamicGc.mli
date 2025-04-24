@@ -32,6 +32,13 @@ type config = {
   heap_really_worry_mb : int;
 }
 
+module Config : sig
+  (** Produces a simple config that will set space_overhead to 120, the default,
+   * when the size of the major heap is below the given threshold. When the heap
+   * is larger than the given threshold, space_overhead will be set to 80. *)
+  val simple: threshold_mb:int -> config
+end
+
 (* Starts dynamic GC tuning based on the given config. Recomputes and applies
  * the desired space_overhead after each major collection.
  *
